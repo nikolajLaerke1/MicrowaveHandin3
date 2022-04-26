@@ -8,6 +8,7 @@ namespace Microwave.Classes.Boundary
 	public class Beeper : IBeeper
 	{
 		private readonly IOutput beeperOutput;
+		private const int BeepInterval = 500;
 		
 		public Beeper(IOutput output)
 		{
@@ -16,10 +17,15 @@ namespace Microwave.Classes.Boundary
 
 		public void Start()
 		{
-			for (var i = 0; i < 3; i++)
+			Beep(3);
+		}
+
+		private void Beep(int times)
+		{
+			for (var i = 0; i < times; i++)
 			{
 				beeperOutput.OutputLine("* B E E P *");
-				Thread.Sleep(500);
+				Thread.Sleep(BeepInterval);
 			}
 		}
 	}
