@@ -2,6 +2,6 @@
 {
 	public interface IBeeper
 	{
-		public void StartBeeping();
+		public void Start();
 	}
 }
