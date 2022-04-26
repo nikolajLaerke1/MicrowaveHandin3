@@ -19,6 +19,7 @@ namespace Microwave.Test.Unit
 
         private IDisplay display;
         private ILight light;
+        private IBeeper beeper;
 
         private ICookController cooker;
 
@@ -31,6 +32,7 @@ namespace Microwave.Test.Unit
             door = Substitute.For<IDoor>();
             light = Substitute.For<ILight>();
             display = Substitute.For<IDisplay>();
+            beeper = Substitute.For<IBeeper>();
             cooker = Substitute.For<ICookController>();
 
             uut = new UserInterface(
@@ -38,6 +40,7 @@ namespace Microwave.Test.Unit
                 door,
                 display,
                 light,
+                beeper,
                 cooker);
         }
 
