@@ -24,6 +24,8 @@ namespace Microwave.Classes.Controllers
             IButton powerButton,
             IButton timeButton,
             IButton startCancelButton,
+            IButton decreaseTimerButton,
+            IButton increaseTimerButton,
             IDoor door,
             IDisplay display,
             ILight light,
@@ -32,6 +34,8 @@ namespace Microwave.Classes.Controllers
             powerButton.Pressed += new EventHandler(OnPowerPressed);
             timeButton.Pressed += new EventHandler(OnTimePressed);
             startCancelButton.Pressed += new EventHandler(OnStartCancelPressed);
+            increaseTimerButton.Pressed += new EventHandler(OnIncreasePressed);
+            decreaseTimerButton.Pressed += new EventHandler(OnDecreasePressed);
 
             door.Closed += new EventHandler(OnDoorClosed);
             door.Opened += new EventHandler(OnDoorOpened);
@@ -39,6 +43,16 @@ namespace Microwave.Classes.Controllers
             myCooker = cooker;
             myLight = light;
             myDisplay = display;
+        }
+
+        public void OnIncreasePressed(object sender, EventArgs e)
+        {
+            myCooker.IncreaseTimer();
+        }
+        
+        public void OnDecreasePressed(object sender, EventArgs e)
+        {
+            myCooker.DecreaseTimer();
         }
 
         private void ResetValues()

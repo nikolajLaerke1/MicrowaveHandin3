@@ -32,7 +32,7 @@ namespace Microwave.Classes.Controllers
             myTimer = timer;
             myDisplay = display;
             myPowerTube = powerTube;
-
+            
             timer.Expired += new EventHandler(OnTimerExpired);
             timer.TimerTick += new EventHandler(OnTimerTick);
         }
@@ -42,6 +42,22 @@ namespace Microwave.Classes.Controllers
             myPowerTube.TurnOn(power);
             myTimer.Start(time);
             isCooking = true;
+        }
+        
+        public void DecreaseTimer()
+        {
+            if (isCooking)
+            {
+                myTimer.DecreaseTimeRemaining();
+            }
+        }
+        
+        public void IncreaseTimer()
+        {
+            if (isCooking)
+            {
+                myTimer.IncreaseTimeRemaining();
+            }
         }
 
         public void Stop()
