@@ -14,6 +14,8 @@ namespace Microwave.Test.Integration
         private Button powerButton;
         private Button timeButton;
         private Button startCancelButton;
+        private Button decreaseTimerButton;
+        private Button increaseTimerButton;
 
         private UserInterface ui;
 
@@ -29,13 +31,17 @@ namespace Microwave.Test.Integration
             powerButton = new Button();
             timeButton = new Button();
             startCancelButton = new Button();
+            decreaseTimerButton = new Button();
+            increaseTimerButton = new Button();
 
             light = Substitute.For<ILight>();
             display = Substitute.For<IDisplay>();
             cooker = Substitute.For<ICookController>();
             beeper = Substitute.For<IBeeper>();
 
-            ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, beeper, cooker);
+            ui = new UserInterface(powerButton, timeButton, startCancelButton, decreaseTimerButton, 
+                increaseTimerButton, display, light, 
+                beeper, cooker);
         }
 
         [Test]
