@@ -36,19 +36,28 @@ namespace Microwave.App
             cooker.UI = ui;
 
             // Simulate a simple sequence
+            
+                powerButton.Press();
+                
 
-            powerButton.Press();
+                timeButton.Press();
 
-            timeButton.Press();
+                startCancelButton.Press();
 
-            startCancelButton.Press();
+                // The simple sequence should now run
+                
+                // Simulate increasing the timer
+                increaseTimerButton.Press();
 
-            // The simple sequence should now run
+                // Simulate reducing the timer
+                // decreaseTimerButton.Press();
+                System.Console.WriteLine("Press 'enter' to stop");
 
-            System.Console.WriteLine("When you press enter, the program will stop");
-            // Wait for input
+                Console.ReadLine();
 
-            System.Console.ReadLine();
+                // Wait for input
         }
+
+        
     }
 }
