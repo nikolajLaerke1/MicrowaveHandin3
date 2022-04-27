@@ -22,6 +22,6 @@ public class BeeperTest
 	public void Start_BeepOutputThreeTimes()
 	{
 		uut.Start();
-		output.Received(3).OutputLine("* B E E P *");
+		output.Received(3).OutputLine(Arg.Is<string>(str => str.Contains($"* B E E P *")));
 	}
 }
