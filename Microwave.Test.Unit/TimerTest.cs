@@ -137,7 +137,7 @@ namespace Microwave.Test.Unit
         }
         
         [Test]
-        public void IncreaseTimer_started3595_TimeRemaining3600()
+        public void IncreaseTimer_started3595_TimeRemaining3599()
         {
             uut.Start(3595); 
             uut.IncreaseTimeRemaining();
