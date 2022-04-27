@@ -16,7 +16,6 @@ namespace Microwave.Test.Integration
         private PowerTube powerTube;
         private Beeper beeper;
         private CookController cooker;
-        private Beeper beeper;
 
         private UserInterface ui;
         private Light light;

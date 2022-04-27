@@ -20,12 +20,11 @@ namespace Microwave.App
 
             Display display = new Display(output);
 
-            // TubePower power = TubePower.W700;
-            // PowerTube powerTube = new PowerTube(output, power);
-            PowerTube powerTube = new PowerTube(output);
+            TubePower power = TubePower.W700;
+            PowerTube powerTube = new PowerTube(output, power);
             Light light = new Light(output);
 
-            // Beeper beeper = new Beeper(output);
+            Beeper beeper = new Beeper(output);
 
             Microwave.Classes.Boundary.Timer timer = new Timer();
 
@@ -34,7 +33,7 @@ namespace Microwave.App
 
             // UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, beeper, cooker);
             UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, decreaseTimerButton,
-                increaseTimerButton, door, display, light, cooker);
+                increaseTimerButton, door, display, light, beeper, cooker);
             
 
             // Finish the double association
@@ -55,7 +54,14 @@ namespace Microwave.App
                 increaseTimerButton.Press();
 
                 // Simulate reducing the timer
-                // decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                
+                decreaseTimerButton.Press();
                 System.Console.WriteLine("Press 'enter' to stop");
 
                 Console.ReadLine();

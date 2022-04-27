@@ -40,8 +40,7 @@ namespace Microwave.Test.Integration
             beeper = Substitute.For<IBeeper>();
 
             ui = new UserInterface(powerButton, timeButton, startCancelButton, decreaseTimerButton, 
-                increaseTimerButton, display, light, 
-                beeper, cooker);
+                increaseTimerButton, door, display, light, beeper, cooker);
         }
 
         [Test]
