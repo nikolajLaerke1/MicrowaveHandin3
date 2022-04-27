@@ -98,6 +98,34 @@ namespace Microwave.Test.Unit
 
             Assert.That(!pause.WaitOne(1100));
         }
+        
+        [Test]
+        public void Stop_Started2minIncrease_TimerIncreasedBy10()
+        {
+            uut.Start(60); 
+            uut.IncreaseTimeRemaining();
+            uut.Stop();
+            Assert.That(uut.TimeRemaining, Is.EqualTo(70));
+        }
+        
+        [Test]
+        public void Stop_Started2minIncrease_TimerDecreasedBy10()
+        {
+            uut.Start(60); 
+            uut.DecreaseTimeRemaining();
+            uut.Stop();
+            Assert.That(uut.TimeRemaining, Is.EqualTo(50));
+        }
+        
+        [Test]
+        public void Stop_Started2minIncreaseAndDecrease_TimerUnchanged()
+        {
+            uut.Start(60); 
+            uut.IncreaseTimeRemaining();
+            uut.DecreaseTimeRemaining();
+            uut.Stop();
+            Assert.That(uut.TimeRemaining, Is.EqualTo(60));
+        }
 
         [Test]
         public void Stop_Started_NoExpiredTriggered()

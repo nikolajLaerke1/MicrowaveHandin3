@@ -45,15 +45,10 @@ namespace Microwave.Classes.Controllers
             myDisplay = display;
         }
 
-        public void OnIncreasePressed(object sender, EventArgs e)
-        {
-            myCooker.IncreaseTimer();
-        }
+        public void OnIncreasePressed(object sender, EventArgs e) => myCooker.IncreaseTimer();
         
-        public void OnDecreasePressed(object sender, EventArgs e)
-        {
-            myCooker.DecreaseTimer();
-        }
+        public void OnDecreasePressed(object sender, EventArgs e) => myCooker.DecreaseTimer();
+            
 
         private void ResetValues()
         {
