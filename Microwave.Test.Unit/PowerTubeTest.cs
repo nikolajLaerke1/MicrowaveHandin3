@@ -20,13 +20,14 @@ namespace Microwave.Test.Unit
             uut = new PowerTube(output , p);
         }
 
-        [TestCase(1)]
-        [TestCase(50)]
-        [TestCase(100)]
-        [TestCase(699)]
-        [TestCase(700)]
-        public void TurnOn_WasOffCorrectPower_CorrectOutput(int power)
+        [TestCase(TubePower.W700,1)]
+        [TestCase(TubePower.W700,50)]
+        [TestCase(TubePower.W700, 100)]
+        [TestCase(TubePower.W700,699)]
+        [TestCase(TubePower.W700, 700)]
+        public void TurnOn_WasOffCorrectPower_CorrectOutput(TubePower p, int power)
         {
+            uut.TubePower = p;
             uut.TurnOn(power);
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
         }

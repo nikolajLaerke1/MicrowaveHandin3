@@ -13,19 +13,19 @@ namespace Microwave.Classes.Boundary
     public class PowerTube : IPowerTube
     {
         private IOutput myOutput;
-        private TubePower tubePower;
+        public TubePower TubePower { get; set; }
 
         private bool IsOn = false;
 
         public PowerTube(IOutput output, TubePower power)
         {
             myOutput = output;
-            tubePower = power;
+            TubePower = power;
         }
 
         public void TurnOn(int power)
         {
-            if (power < 1 || (int)tubePower < power)
+            if (power < 1 || (int)TubePower < power)
             {
                 throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and {tubePower} (incl.)");
             }
