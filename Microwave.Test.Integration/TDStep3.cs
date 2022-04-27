@@ -24,6 +24,7 @@ namespace Microwave.Test.Integration
         private Display display;
         private Beeper beeper;
         private CookController cooker;
+        private Beeper beeper;
 
         private PowerTube powerTube;
         private Timer timer;
@@ -42,7 +43,8 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            TubePower p = TubePower.W700;
+            powerTube = new PowerTube(output, p);
             beeper = new Beeper(output);
             timer = new Timer();
 
@@ -153,7 +155,8 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            TubePower p = TubePower.W700;
+            powerTube = new PowerTube(output, p);
             beeper = new Beeper(output);
             var faketimer = Substitute.For<ITimer>();
 
@@ -175,7 +178,7 @@ namespace Microwave.Test.Integration
             startCancelButton.Press();
 
             faketimer.TimerTick += Raise.EventWith(this, EventArgs.Empty);
-
+            
             output.Received(1).OutputLine(Arg.Is<string>(str => str.Contains("00:59")));
         }
 
