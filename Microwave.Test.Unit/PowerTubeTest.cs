@@ -47,11 +47,26 @@ namespace Microwave.Test.Unit
             output.Received().OutputLine(Arg.Is<string>(str => str.Contains($"{power}")));
         }
 
+        [TestCase(TubePower.W500,-5)]
+        [TestCase(TubePower.W500,-1)]
+        [TestCase(TubePower.W500,0)]
+        [TestCase(TubePower.W500,501)]
+        [TestCase(TubePower.W500,550)]
         [TestCase(TubePower.W700,-5)]
         [TestCase(TubePower.W700,-1)]
         [TestCase(TubePower.W700,0)]
         [TestCase(TubePower.W700,701)]
         [TestCase(TubePower.W700,750)]
+        [TestCase(TubePower.W800,-5)]
+        [TestCase(TubePower.W800,-1)]
+        [TestCase(TubePower.W800,0)]
+        [TestCase(TubePower.W800,801)]
+        [TestCase(TubePower.W800,850)]
+        [TestCase(TubePower.W1000,-5)]
+        [TestCase(TubePower.W1000,-1)]
+        [TestCase(TubePower.W1000,0)]
+        [TestCase(TubePower.W1000,1001)]
+        [TestCase(TubePower.W1000,1050)]
         public void TurnOn_WasOffOutOfRangePower_ThrowsException(TubePower p, int power)
         {
             uut.TubePower = p;
