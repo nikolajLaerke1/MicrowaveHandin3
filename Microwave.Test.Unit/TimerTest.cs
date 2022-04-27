@@ -100,7 +100,7 @@ namespace Microwave.Test.Unit
         }
         
         [Test]
-        public void Stop_Started2minIncrease_TimerIncreasedBy10()
+        public void IncreaseTimer_Started60sek_TimeRemaining70()
         {
             uut.Start(60); 
             uut.IncreaseTimeRemaining();
@@ -109,7 +109,7 @@ namespace Microwave.Test.Unit
         }
         
         [Test]
-        public void Stop_Started2minIncrease_TimerDecreasedBy10()
+        public void DecreaseTimer_Started60sek_TimeRemaining50()
         {
             uut.Start(60); 
             uut.DecreaseTimeRemaining();
@@ -118,13 +118,31 @@ namespace Microwave.Test.Unit
         }
         
         [Test]
-        public void Stop_Started2minIncreaseAndDecrease_TimerUnchanged()
+        public void DecreaseAndIncreaseTimer_Started60sek_TimeRemaining60()
         {
             uut.Start(60); 
             uut.IncreaseTimeRemaining();
             uut.DecreaseTimeRemaining();
             uut.Stop();
             Assert.That(uut.TimeRemaining, Is.EqualTo(60));
+        }
+        
+        [Test]
+        public void DecreaseTimer_Started5sek_TimeRemaining0()
+        {
+            uut.Start(5); 
+            uut.DecreaseTimeRemaining();
+            uut.Stop();
+            Assert.That(uut.TimeRemaining, Is.EqualTo(0));
+        }
+        
+        [Test]
+        public void IncreaseTimer_started3595_TimeRemaining3600()
+        {
+            uut.Start(3595); 
+            uut.IncreaseTimeRemaining();
+            uut.Stop();
+            Assert.That(uut.TimeRemaining, Is.EqualTo(3599));
         }
 
         [Test]
