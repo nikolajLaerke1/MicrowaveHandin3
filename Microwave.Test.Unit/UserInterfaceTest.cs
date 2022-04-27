@@ -89,6 +89,23 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
+        public void Ready_DecreaseTimerButton_EventReceived()
+        { 
+            decreaseTimerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            
+            cooker.Received(1).DecreaseTimer();
+        }
+
+        
+        [Test]
+        public void Ready_IncreaseTimerButton_EventReceived()
+        { 
+            increaseTimerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            
+            cooker.Received(1).IncreaseTimer();
+        }
+
+        [Test]
         public void Ready_14PowerButton_PowerIs700()
         {
             for (int i = 1; i <= 14; i++)
