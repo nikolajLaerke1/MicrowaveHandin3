@@ -41,7 +41,8 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            TubePower p = TubePower.W700;
+            powerTube = new PowerTube(output, p);
             timer = new Timer();
 
 
@@ -151,7 +152,8 @@ namespace Microwave.Test.Integration
 
             light = new Light(output);
             display = new Display(output);
-            powerTube = new PowerTube(output);
+            TubePower p = TubePower.W700;
+            powerTube = new PowerTube(output, p);
             var faketimer = Substitute.For<ITimer>();
 
             // Make a new cooker, with the 
