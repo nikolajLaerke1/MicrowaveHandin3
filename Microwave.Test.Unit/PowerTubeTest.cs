@@ -20,11 +20,26 @@ namespace Microwave.Test.Unit
             uut = new PowerTube(output , p);
         }
 
+        [TestCase(TubePower.W500,1)]
+        [TestCase(TubePower.W500,50)]
+        [TestCase(TubePower.W500, 100)]
+        [TestCase(TubePower.W500,499)]
+        [TestCase(TubePower.W500, 500)]
         [TestCase(TubePower.W700,1)]
         [TestCase(TubePower.W700,50)]
         [TestCase(TubePower.W700, 100)]
         [TestCase(TubePower.W700,699)]
         [TestCase(TubePower.W700, 700)]
+        [TestCase(TubePower.W800,1)]
+        [TestCase(TubePower.W800,50)]
+        [TestCase(TubePower.W800, 100)]
+        [TestCase(TubePower.W800,799)]
+        [TestCase(TubePower.W800, 800)]
+        [TestCase(TubePower.W1000,1)]
+        [TestCase(TubePower.W1000,50)]
+        [TestCase(TubePower.W1000, 100)]
+        [TestCase(TubePower.W1000,999)]
+        [TestCase(TubePower.W1000, 1000)]
         public void TurnOn_WasOffCorrectPower_CorrectOutput(TubePower p, int power)
         {
             uut.TubePower = p;
