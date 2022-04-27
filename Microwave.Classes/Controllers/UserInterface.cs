@@ -48,15 +48,10 @@ namespace Microwave.Classes.Controllers
             myBeeper = beeper;
         }
 
-        public void OnIncreasePressed(object sender, EventArgs e)
-        {
-            myCooker.IncreaseTimer();
-        }
+        public void OnIncreasePressed(object sender, EventArgs e) => myCooker.IncreaseTimer();
         
-        public void OnDecreasePressed(object sender, EventArgs e)
-        {
-            myCooker.DecreaseTimer();
-        }
+        public void OnDecreasePressed(object sender, EventArgs e) => myCooker.DecreaseTimer();
+            
 
         private void ResetValues()
         {
