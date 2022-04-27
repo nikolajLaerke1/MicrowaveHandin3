@@ -11,6 +11,8 @@ namespace Microwave.App
             Button startCancelButton = new Button();
             Button powerButton = new Button();
             Button timeButton = new Button();
+            Button decreaseTimerButton = new();
+            Button increaseTimerButton = new();
 
             Door door = new Door();
 
@@ -20,34 +22,53 @@ namespace Microwave.App
 
             TubePower power = TubePower.W700;
             PowerTube powerTube = new PowerTube(output, power);
-
             Light light = new Light(output);
 
             Beeper beeper = new Beeper(output);
 
             Microwave.Classes.Boundary.Timer timer = new Timer();
 
+            // CookController cooker = new CookController(timer, display, powerTube);
             CookController cooker = new CookController(timer, display, powerTube);
 
-            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, beeper, cooker);
+            // UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, door, display, light, beeper, cooker);
+            UserInterface ui = new UserInterface(powerButton, timeButton, startCancelButton, decreaseTimerButton,
+                increaseTimerButton, door, display, light, beeper, cooker);
+            
 
             // Finish the double association
-            cooker.UI = ui;
+            // cooker.UI = ui;
 
             // Simulate a simple sequence
+            
+                powerButton.Press();
+                
 
-            powerButton.Press();
+                timeButton.Press();
 
-            timeButton.Press();
+                startCancelButton.Press();
 
-            startCancelButton.Press();
+                // The simple sequence should now run
+                
+                // Simulate increasing the timer
+                increaseTimerButton.Press();
 
-            // The simple sequence should now run
+                // Simulate reducing the timer
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                decreaseTimerButton.Press();
+                
+                decreaseTimerButton.Press();
+                System.Console.WriteLine("Press 'enter' to stop");
 
-            System.Console.WriteLine("When you press enter, the program will stop");
-            // Wait for input
+                Console.ReadLine();
 
-            System.Console.ReadLine();
+                // Wait for input
         }
+
+        
     }
 }

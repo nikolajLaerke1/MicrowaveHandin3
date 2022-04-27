@@ -55,6 +55,36 @@ namespace Microwave.Test.Unit
         }
 
         [Test]
+        public void DecreaseTimer_IsCooking_TimerIsReduced()
+        {
+            uut.StartCooking(50, 60);
+            uut.DecreaseTimer();
+            timer.Received().DecreaseTimeRemaining();
+        }
+
+        [Test]
+        public void DecreaseTimer_IsNotCooking_TimerIsNotReduced()
+        {
+            uut.DecreaseTimer();
+            timer.Received(0).DecreaseTimeRemaining();
+        }
+        
+        [Test]
+        public void IncreaseTimer_IsCooking_TimerIsIncreased()
+        {
+            uut.StartCooking(50, 60);
+            uut.IncreaseTimer();
+            timer.Received().IncreaseTimeRemaining();
+        }
+
+        [Test]
+        public void IncreaseTimer_IsNotCooking_TimerIsNotIncreased()
+        {
+            uut.IncreaseTimer();
+            timer.Received(0).IncreaseTimeRemaining();
+        }
+        
+        [Test]
         public void Cooking_TimerExpired_PowerTubeOff()
         {
             uut.StartCooking(50, 60);

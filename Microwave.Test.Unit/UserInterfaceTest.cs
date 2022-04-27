@@ -14,6 +14,8 @@ namespace Microwave.Test.Unit
         private IButton powerButton;
         private IButton timeButton;
         private IButton startCancelButton;
+        private IButton decreaseTimerButton;
+        private IButton increaseTimerButton;
 
         private IDoor door;
 
@@ -29,6 +31,9 @@ namespace Microwave.Test.Unit
             powerButton = Substitute.For<IButton>();
             timeButton = Substitute.For<IButton>();
             startCancelButton = Substitute.For<IButton>();
+            decreaseTimerButton = Substitute.For<IButton>();
+            increaseTimerButton = Substitute.For<IButton>();
+            
             door = Substitute.For<IDoor>();
             light = Substitute.For<ILight>();
             display = Substitute.For<IDisplay>();
@@ -36,7 +41,7 @@ namespace Microwave.Test.Unit
             cooker = Substitute.For<ICookController>();
 
             uut = new UserInterface(
-                powerButton, timeButton, startCancelButton,
+                powerButton, timeButton, startCancelButton, decreaseTimerButton, increaseTimerButton,
                 door,
                 display,
                 light,
@@ -81,6 +86,23 @@ namespace Microwave.Test.Unit
             powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             powerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
             display.Received(1).ShowPower(Arg.Is<int>(100));
+        }
+
+        [Test]
+        public void Ready_DecreaseTimerButton_EventReceived()
+        { 
+            decreaseTimerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            
+            cooker.Received(1).DecreaseTimer();
+        }
+
+        
+        [Test]
+        public void Ready_IncreaseTimerButton_EventReceived()
+        { 
+            increaseTimerButton.Pressed += Raise.EventWith(this, EventArgs.Empty);
+            
+            cooker.Received(1).IncreaseTimer();
         }
 
         [Test]

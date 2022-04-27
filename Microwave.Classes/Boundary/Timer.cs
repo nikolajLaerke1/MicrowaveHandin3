@@ -21,6 +21,9 @@ namespace Microwave.Classes.Boundary
             timer.AutoReset = true;  // Repeatable timer
         }
 
+        public void DecreaseTimeRemaining() => TimeRemaining = TimeRemaining > 10 ? TimeRemaining - 10 : 0;
+        
+        public void IncreaseTimeRemaining() => TimeRemaining = TimeRemaining + 10 >= 3600 ? 3599 : TimeRemaining + 10 ;
 
         public void Start(int time)
         {
